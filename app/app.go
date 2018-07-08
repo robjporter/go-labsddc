@@ -1,27 +1,19 @@
 package app
 
 import (
-	"sync"
 	"time"
 	"runtime"
 	"github.com/kataras/iris"
 	"github.com/sirupsen/logrus"
 	"github.com/robjporter/go-xtools/xcron"
 	"github.com/robjporter/go-xtools/xhealth"
-)
-
-const (
-	PORT = 8080
-)
-
-var (
-	once     sync.Once
-	instance *Application
+	"github.com/robjporter/go-xtools/xconfig"
 )
 
 func GetInstance() *Application {
 	once.Do(func() {
 		instance = &Application{
+			Registry:  xconfig.New(),
 			Logger:    logrus.New(),
 			Server:    iris.New(),
 			Crons:     xcron.New(),
@@ -36,16 +28,16 @@ func GetInstance() *Application {
 func New() *Application {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	app := GetInstance()
+	app.displayBanner()
+	app.info(nil, "Starting application configuration.")
+	app.Logger.SetLevel(logrus.DebugLevel)
 
+	app.getVersionInfo()
 	app.setupServer()
-	app.setupErrorHandler()
+	app.SetupErrorHandlers()
 	app.setupRoutes()
 	app.setupTemplates()
+	app.SetupWebsockets("/chat", handleConnection)
+
 	return app
 }
-
-func (a *Application) setupServer()       {}
-func (a *Application) setupErrorHandler() {}
-func (a *Application) setupRoutes()       {}
-func (a *Application) setupTemplates()    {}
-func (a *Application) Start()             {}

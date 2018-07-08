@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="public/css/semantic.2.3.1.min.css" rel="stylesheet" media="screen" title="no title">
+    <link href="public/css/custom.min.css" rel="stylesheet" media="screen" title="no title">
+    <title>{{.appname}} - {{.title}}</title>
+</head>
+<body>
+{{ yield }}
+<script src="/iris-ws.js"></script>
+<script src="static/js/visitors.js"></script>
+<script src="public/js/jquery.3.3.1.min.js"></script>
+<script src="public/js/semantic.2.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.ui.checkbox').checkbox();
+    });
+</script>
+</body>
+</html>

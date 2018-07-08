@@ -2,14 +2,14 @@ package app
 
 import (
 	"github.com/kataras/iris"
-	"github.com/robjporter/go-xtools/xregistry"
 	"github.com/sirupsen/logrus"
 	"github.com/robjporter/go-xtools/xcron"
 	"github.com/robjporter/go-xtools/xhealth"
+	"github.com/robjporter/go-xtools/xconfig"
 )
 
 type Application struct {
-	Registry  xregsitry.Xregistry
+	Registry  *xconfig.Config
 	Logger    *logrus.Logger
 	Server    *iris.Application
 	LastError error
