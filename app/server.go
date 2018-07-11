@@ -5,6 +5,7 @@ import (
 	"github.com/kataras/iris/middleware/logger"
 	"github.com/kataras/iris/middleware/recover"
 	"github.com/robjporter/go-xtools/xas"
+	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 func (a *Application) shutdown() {
@@ -33,7 +34,7 @@ func (a *Application) setupServer() {
 	a.Server.Use(logger.New())
 }
 
-func (a *Application) Start() {
+func (a *Application) start() {
 	a.logDebug(nil, "Starting services.")
 	a.Crons.Run()
 	a.logDebug(nil, "Cron jobs started")
@@ -50,4 +51,9 @@ func (a *Application) Start() {
 	}))
 	a.logDebug(nil, "Web Server started.")
 	a.info(nil, "All services have been started successfully.")
+}
+
+func (a *Application) Run() {
+	kingpin.Version(VERSION)
+	a.processCommandLineArguments()
 }

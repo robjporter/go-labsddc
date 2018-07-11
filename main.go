@@ -10,5 +10,5 @@ var (
 
 func main() {
 	App = app.New()
-	App.Start()
+	App.Run()
 }

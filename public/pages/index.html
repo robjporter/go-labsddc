@@ -3,14 +3,90 @@
     <div class="three column row" style="padding:0;margin:0">
         <div class="three wide column" style="padding:0;margin:0"></div>
         <div class="ten wide column center aligned" style="padding:0;margin:0">
-            <div style="height:260px;background-color:#005073;margin-top:6px;">
-                <div class="ui three column grid" style="padding:0;margin:0">
-                    <div class="column" style="padding:0;margin:0"></div>
-                    <div class="row">
-                        <div class="column">DATA</div>
-                        <div class="column">DATA</div>
-                        <div class="column">DATA</div>
+            <div style="height:260px;background-color:#1BA0D7;margin-top:6px;">
+                <div class="ui sixteen column grid" style="padding:0;margin:0">
+                    <div class="one wide column"></div>
+                    <div class="four wide column">
+                        <div class="" style="height:200px;background-color:#1BA0D7;margin-top:40px;">
+                            <div class="ui">
+                            {{ if .SDDC_DEPLOYED }}
+                                <img src="static/images/tick3.png" height="100"/>
+                            {{ else }}
+                                <img src="static/images/tick4.png" height="100"/>
+                            {{ end }}
+                            </div>
+                            <div class="content">
+                                <h2 style="color:white">SDDC Deployed</h2>
+                            </div>
+                            <div class="extra content">
+                            {{ if .SDDC_DEPLOYED }}
+                                <h3 style="color:#65696F">{{ .SDDC_DEPLOYED_COUNT }}</h3>
+                            {{ else }}
+                                <button class="ui secondary button">
+                                    Deploy new SDDC
+                                </button>
+                            {{ end }}
+                            </div>
+                        </div>
                     </div>
+                    <div class="one wide column">
+                        <div class="ui vertical divider">
+                            and
+                        </div>
+                    </div>
+                    <div class="four wide column">
+                        <div class="ui" style="height:200px;background-color:#1BA0D7;margin-top:40px;">
+                            <div class="ui">
+                            {{ if .VMM_DEPLOYED }}
+                                <img src="static/images/tick3.png" height="100"/>
+                            {{ else }}
+                                <img src="static/images/tick4.png" height="100"/>
+                            {{ end }}
+                            </div>
+                            <div class="content" style="color:white">
+                                <h2>VVM Domain Deployed</h2>
+                            </div>
+                            <div class="extra content">
+                            {{ if .VMM_DEPLOYED }}
+                                <h3 style="color:#65696F">{{ .SDDC_VMM_DEPLOYED_COUNT }}</h3>
+                            {{ else }}
+                                <button class="ui secondary button">
+                                    Deploy new VVM Domain
+                                </button>
+                            {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="one wide column">
+                        <div class="ui vertical divider">
+                            and
+                        </div>
+                    </div>
+                    <div class="four wide column">
+                        <div class="ui"
+                             style="height:200px;background-color:#1BA0D7;margin-top:40px;">
+                            <div class="ui">
+                            {{ if .HX_DEPLOYED }}
+                                <img src="static/images/tick3.png" height="100"/>
+                            {{ else }}
+                                <img src="static/images/tick4.png" height="100"/>
+                            {{ end }}
+                            </div>
+                            <div class="content" style="color:white">
+                                <h2>HX Deployed</h2>
+                            </div>
+                            <div class="extra content">
+                            {{ if .HX_DEPLOYED }}
+                                <h3 style="color:#65696F">{{ .SDDC_HX_DEPLOYED_COUNT }}</h3>
+                            {{ else }}
+                                <button class="ui secondary button">
+                                    Deploy new HX Domain
+                                </button>
+                            {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="one wide column"></div>
                 </div>
             </div>
         </div>
@@ -23,15 +99,120 @@
         <div class="three wide column" style="padding:0;margin:0"></div>
         <div class="ten wide column center aligned" style="padding:0;margin:0">
             <div style="height:260px;background-color:white;margin-top:6px;">
-                <div class="ui three column grid" style="padding:0;margin:0">
-                    <div class="column" style="padding:0;margin:0"></div>
-                    <div class="row">
-                        <div class="column">DATA</div>
-                        <div class="column">DATA</div>
-                        <div class="column">DATA</div>
+                <div class="ui sixteen column grid" style="padding:0;margin:0">
+                    <div class="one wide column"></div>
+                    <div class="four wide column">
+                        <div class="ui" style="height:200px;margin-top:40px;">
+                            <div class="ui">
+                            {{ if .VDDC_DEPLOYED }}
+                                <img src="static/images/tick3.png" height="100"/>
+                            {{ else }}
+                                <img src="static/images/tick4.png" height="100"/>
+                            {{ end }}
+                            </div>
+                            <div class="content" style="color:#1BA0D7">
+                                <h2>vSDDC Deployed</h2>
+                            </div>
+                            <div class="extra content" style="color:#65696F">
+                                <h3>{{ .VDDC_DEPLOYED_COUNT }}</h3>
+                            </div>
+                            <div class="extra content" style="color:#65696F">
+                                <button class="ui secondary button">
+                                    Deploy new vSDDC Instance
+                                </button>
+                            </div>
+                        </div>
                     </div>
+                    <div class="one wide column">
+                        <div class="ui vertical divider">
+                            and
+                        </div>
+                    </div>
+                    <div class="four wide column">
+                        <div class="ui" style="height:200px;margin-top:40px;">
+                            <div class="ui">
+                            {{ if .VNETWORK_DEPLOYED }}
+                                <img src="static/images/tick3.png" height="100"/>
+                            {{ else }}
+                                <img src="static/images/tick4.png" height="100"/>
+                            {{ end }}
+                            </div>
+                            <div class="content" style="color:#1BA0D7">
+                                <h2>vNetworks Deployed</h2>
+                            </div>
+                            <div class="extra content" style="color:#65696F">
+                                <h3>{{ .VNETWORK_DEPLOYED_COUNT }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="one wide column">
+                        <div class="ui vertical divider">
+                            and
+                        </div>
+                    </div>
+                    <div class="four wide column">
+                        <div class="ui"
+                             style="height:200px;margin-top:40px;">
+                            <div class="ui">
+                            {{ if .VM_DEPLOYED }}
+                                <img src="static/images/tick3.png" height="100"/>
+                            {{ else }}
+                                <img src="static/images/tick4.png" height="100"/>
+                            {{ end }}
+                            </div>
+                            <div class="content" style="color:#1BA0D7">
+                                <h2>VM Deployed</h2>
+                            </div>
+                            <div class="extra content" style="color:#65696F">
+                                <h3>{{ .VM_DEPLOYED_COUNT }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="one wide column"></div>
                 </div>
             </div>
         </div>
         <div class="three wide column"></div>
     </div>
+</div>
+<div style="height:6rem"></div>
+<div class="ui grid" style="height:320px;">
+    <div class="three column row" style="padding:0;margin:0">
+        <div class="three wide column" style="padding:0;margin:0"></div>
+        <div class="ten wide column center aligned" style="padding:0;margin:0">
+            <div style="height:260px;background-color:white;margin-top:6px;">
+                <div class="ui sixteen column grid" style="padding:0;margin:0">
+                    <div class="one wide column"></div>
+                    <div class="four wide column">
+                        <div class="ui" style="height:200px;margin-top:40px;">
+                            HERE
+                        </div>
+                    </div>
+                    <div class="one wide column">
+                        <div class="ui vertical divider">
+                            and
+                        </div>
+                    </div>
+                    <div class="four wide column">
+                        <div class="ui" style="height:200px;margin-top:40px;">
+                            HERE
+                        </div>
+                    </div>
+                    <div class="one wide column">
+                        <div class="ui vertical divider">
+                            and
+                        </div>
+                    </div>
+                    <div class="four wide column">
+                        <div class="ui"
+                             style="height:200px;margin-top:40px;">
+                            HERE
+                        </div>
+                    </div>
+                    <div class="one wide column"></div>
+                </div>
+            </div>
+        </div>
+        <div class="three wide column"></div>
+    </div>
+</div>
