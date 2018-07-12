@@ -15,6 +15,12 @@ func (a *Application) getVersionInfo() {
 	a.logDebug(nil, "Version info populated.")
 }
 
+func (a *Application) loadConfig() {
+	a.Registry.Set("aci.1.url", "https://10.51.31.137/")
+	a.Registry.Set("aci.1.username", "admin")
+	a.Registry.Set("aci.1.password", "C15co123")
+}
+
 func (a *Application) showConfig() {
 	fmt.Println("SHOWING CONFIG")
 }

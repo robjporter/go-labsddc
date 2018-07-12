@@ -35,6 +35,8 @@ func New() *Application {
 	app.Logger.SetLevel(logrus.DebugLevel)
 
 	app.getVersionInfo()
+	app.setupVariables()
+	app.loadConfig()
 	app.setupServer()
 	app.SetupErrorHandlers()
 	app.setupRoutes()
@@ -42,6 +44,10 @@ func New() *Application {
 	app.SetupWebsockets("/chat", handleConnection)
 
 	return app
+}
+
+func (a *Application) setupVariables() {
+	a.Registry.Set("server.path", "http://localhost:8080/")
 }
 
 func (a *Application) processCommandLineArguments() {

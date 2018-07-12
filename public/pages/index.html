@@ -22,7 +22,7 @@
                             {{ if .SDDC_DEPLOYED }}
                                 <h3 style="color:#65696F">{{ .SDDC_DEPLOYED_COUNT }}</h3>
                             {{ else }}
-                                <button class="ui secondary button">
+                                <button class="ui secondary button" id="newsddc">
                                     Deploy new SDDC
                                 </button>
                             {{ end }}
@@ -50,7 +50,7 @@
                             {{ if .VMM_DEPLOYED }}
                                 <h3 style="color:#65696F">{{ .SDDC_VMM_DEPLOYED_COUNT }}</h3>
                             {{ else }}
-                                <button class="ui secondary button">
+                                <button class="ui secondary button" id="newvmm">
                                     Deploy new VVM Domain
                                 </button>
                             {{ end }}
@@ -79,7 +79,7 @@
                             {{ if .HX_DEPLOYED }}
                                 <h3 style="color:#65696F">{{ .SDDC_HX_DEPLOYED_COUNT }}</h3>
                             {{ else }}
-                                <button class="ui secondary button">
+                                <button class="ui secondary button" id="newhx">
                                     Deploy new HX Domain
                                 </button>
                             {{ end }}
@@ -117,7 +117,7 @@
                                 <h3>{{ .VDDC_DEPLOYED_COUNT }}</h3>
                             </div>
                             <div class="extra content" style="color:#65696F">
-                                <button class="ui secondary button">
+                                <button class="ui secondary button" id="newvsddc">
                                     Deploy new vSDDC Instance
                                 </button>
                             </div>
@@ -184,8 +184,19 @@
                 <div class="ui sixteen column grid" style="padding:0;margin:0">
                     <div class="one wide column"></div>
                     <div class="four wide column">
-                        <div class="ui" style="height:200px;margin-top:40px;">
-                            HERE
+                        <div>
+                            TEST
+                        </div>
+                        <div class="ui" style="height:200px;margin-top:10px;">
+                            <div class="circles">
+                                <div class="first circle"
+                                     data-value="0.1"
+                                     data-size="160"
+                                     data-thickness="10"
+                                     data-animation-start-value="0.0">
+                                    <strong></strong>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="one wide column">
@@ -194,8 +205,17 @@
                         </div>
                     </div>
                     <div class="four wide column">
-                        <div class="ui" style="height:200px;margin-top:40px;">
-                            HERE
+                        <div>
+                            TEST
+                        </div>
+                        <div class="circles">
+                            <div class="second circle"
+                                 data-value="0.4"
+                                 data-size="160"
+                                 data-thickness="10"
+                                 data-animation-start-value="0.0">
+                                <strong></strong>
+                            </div>
                         </div>
                     </div>
                     <div class="one wide column">
@@ -204,9 +224,17 @@
                         </div>
                     </div>
                     <div class="four wide column">
-                        <div class="ui"
-                             style="height:200px;margin-top:40px;">
-                            HERE
+                        <div>
+                            TEST
+                        </div>
+                        <div class="circles">
+                            <div class="second circle"
+                                 data-value="0.8"
+                                 data-size="160"
+                                 data-thickness="10"
+                                 data-animation-start-value="0.0">
+                                <strong></strong>
+                            </div>
                         </div>
                     </div>
                     <div class="one wide column"></div>
@@ -214,5 +242,133 @@
             </div>
         </div>
         <div class="three wide column"></div>
+    </div>
+</div>
+
+<div class="ui longer sddc modal">
+    <div class="header">
+        New Software Defined DataCenter
+    </div>
+    <div class="scrolling image content">
+        <div class="ui medium image">
+            <img src="static/images/sddc.png">
+        </div>
+        <div class="description">
+            <div class="ui header">Details for new Software Defined DataCenter</div>
+            <p>These details are required to provision your new SDDC.</p>
+            <form class="ui form segment" id="sddcform">
+                <div class="ui huge form" style="width:500px">
+                    <div class="required field">
+                        <label>Tenant name</label>
+                        <input placeholder="Tenant Name" name="tenantname" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui primary submit sddc button">
+            Proceed
+            <i class="chevron right icon"></i>
+        </div>
+    </div>
+</div>
+<div class="ui longer vmm modal">
+    <div class="header">
+        New Virtual Machine Manager
+    </div>
+    <div class="scrolling image content">
+        <div class="ui medium image">
+            <img src="static/images/vmm.png">
+        </div>
+        <div class="description">
+            <div class="ui header">Modal Header</div>
+            <p>This is an example of expanded content that will cause the modal's dimmer to scroll</p>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui primary approve button">
+            Proceed
+            <i class="right chevron icon"></i>
+        </div>
+    </div>
+</div>
+<div class="ui longer hx modal">
+    <div class="header">
+        New HyperFlex Platform
+    </div>
+    <div class="scrolling image content">
+        <div class="ui medium image">
+            <img src="static/images/hx.png">
+        </div>
+        <div class="description">
+            <div class="ui header">Modal Header</div>
+            <p>This is an example of expanded content that will cause the modal's dimmer to scroll</p>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui primary approve button">
+            Proceed
+            <i class="right chevron icon"></i>
+        </div>
+    </div>
+</div>
+<div class="ui longer vsddc modal">
+    <div class="header">
+        New Virtual Software Defined DataCenter
+    </div>
+    <div class="scrolling image content">
+        <div class="ui medium image">
+            <img src="static/images/vsddc.png">
+        </div>
+        <div class="description">
+            <div class="ui header">Modal Header</div>
+            <p>This is an example of expanded content that will cause the modal's dimmer to scroll</p>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+            <div class="ui divider"></div>
+            <img class="ui wireframe image" src="/images/wireframe/paragraph.png">
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui primary approve button">
+            Proceed
+            <i class="right chevron icon"></i>
+        </div>
     </div>
 </div>

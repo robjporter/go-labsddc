@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 {{range .PAGE_HEADERS}}
-    {{.}}
-{{end}}
+    {{.}}{{end}}
     <link href="static/css/semantic.2.3.2.min.css" rel="stylesheet" media="screen" title="no title">
     <link href="static/css/custom.min.css" rel="stylesheet" media="screen" title="no title">
 {{range .PAGE_CSS}}
     <link href="{{.}}" rel="stylesheet" media="screen" title="no title">
 {{end}}
     <title>{{ .APP_NAME }} - {{ .PAGE_TITLE }}</title>
+
 </head>
 <body style="background-color:#F2F2F2;padding:0;margin:0">
 {{ yield }}
@@ -23,8 +26,10 @@
 <script>
     $(document).ready(function () {
         $('.ui.checkbox').checkbox();
+    {{ range .PAGE_JQUERY }}
+        {{ . }}
+    {{ end }}
     });
-    {{ .PAGE_JQUERY}}
 </script>
 </body>
 </html>
