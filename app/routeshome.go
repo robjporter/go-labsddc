@@ -29,6 +29,7 @@ func (a *Application) routesHome(ctx iris.Context) {
 	ctx.ViewData("PAGE_JQUERY", PAGE_JQUERY_EXTENSION)
 	ctx.ViewData("APP_NAME", "NAME")
 	ctx.ViewData("PAGE_TITLE", "TITLE")
+	ctx.ViewData("SERVERS_STATUS", a.Registry.GetBool("server.cron.up"))
 	tmp := xas.ToInt(a.callGetAPI("sddcdeployedcount"))
 	ctx.ViewData("SDDC_DEPLOYED", xif.IfEquals(tmp > 0))
 	ctx.ViewData("SDDC_DEPLOYED_COUNT", tmp)

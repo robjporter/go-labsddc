@@ -6,10 +6,11 @@ import (
 	"github.com/kataras/iris/middleware/recover"
 	"github.com/robjporter/go-xtools/xas"
 	"gopkg.in/alecthomas/kingpin.v2"
+	"time"
 )
 
 func (a *Application) shutdown() {
-	a.Crons.Stop()
+	a.stopCronJobs()
 	a.info(nil, "All services shut down successfully.")
 }
 
@@ -36,8 +37,9 @@ func (a *Application) setupServer() {
 
 func (a *Application) start() {
 	a.logDebug(nil, "Starting services.")
-	a.Crons.Run()
+	a.runCronJobs()
 	a.logDebug(nil, "Cron jobs started")
+	time.Sleep(5 * time.Second)
 	a.Server.Run(iris.Addr(":"+xas.ToString(PORT)), iris.WithConfiguration(iris.Configuration{ // default configuration:
 		DisableStartupLog: true,
 		DisableInterruptHandler: false,
@@ -51,6 +53,18 @@ func (a *Application) start() {
 	}))
 	a.logDebug(nil, "Web Server started.")
 	a.info(nil, "All services have been started successfully.")
+}
+
+func (a *Application) runCronJobs() {
+	for i := 0; i < len(a.Crons); i++ {
+		a.Crons[i].Run()
+	}
+}
+
+func (a *Application) stopCronJobs() {
+	for i := 0; i < len(a.Crons); i++ {
+		a.Crons[i].Stop()
+	}
 }
 
 func (a *Application) Run() {

@@ -13,7 +13,7 @@ type Application struct {
 	Logger    *logrus.Logger
 	Server    *iris.Application
 	LastError error
-	Crons     *xcron.CronJob
+	Crons     []*xcron.CronJob
 	Port      int
 	StartTime int64
 	Checkers  *xhealth.Pinger

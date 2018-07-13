@@ -10,7 +10,11 @@
                 </g>
             </svg>
             <div class="right floated">
+            {{ if .SERVERS_STATUS }}
                 <img src="static/images/greentick.png" height="60" style="margin-top:4px">
+            {{ else }}
+                <img src="static/images/redcross.png" height="60" style="margin-top:4px">
+            {{ end }}
             </div>
         </div>
         <div class="three wide column"></div>

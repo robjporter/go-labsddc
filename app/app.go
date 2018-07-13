@@ -18,7 +18,7 @@ func GetInstance() *Application {
 			Registry:  xconfig.New(),
 			Logger:    logrus.New(),
 			Server:    iris.New(),
-			Crons:     xcron.New(),
+			Crons:     nil,
 			Port:      PORT,
 			StartTime: time.Now().Unix(),
 			Checkers:  xhealth.New(),
@@ -37,6 +37,7 @@ func New() *Application {
 	app.getVersionInfo()
 	app.setupVariables()
 	app.loadConfig()
+	app.setupCronJobs()
 	app.setupServer()
 	app.SetupErrorHandlers()
 	app.setupRoutes()
@@ -44,6 +45,19 @@ func New() *Application {
 	app.SetupWebsockets("/chat", handleConnection)
 
 	return app
+}
+
+func (a *Application) setupCronJobs() {
+	var cron *xcron.CronJob
+	cron = xcron.New().SetName("URLPings").SetInterval(5).SetCallback(a.checkDevices)
+	a.Crons = append(a.Crons, cron)
+}
+
+func (a *Application) checkDevices() {
+	a.Registry.Set("server.cron.up", true)
+	a.Registry.Set("server.cron.aci.up", true)
+	a.Registry.Set("server.cron.hx.up", true)
+	a.Registry.Set("server.cron.ucs.up", true)
 }
 
 func (a *Application) setupVariables() {
